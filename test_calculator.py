@@ -1,5 +1,5 @@
 import unittest
-from operations import add, subtract
+from operations import add, subtract, divide
 
 class TestCalculator(unittest.TestCase):
 
@@ -56,6 +56,26 @@ class TestCalculator(unittest.TestCase):
             subtract("a", "b")
         with self.assertRaises(TypeError):
             subtract(1, "b")
+
+    def test_divide_integers(self):
+        """Test division of two integers."""
+        self.assertEqual(divide(4, 2), 2)
+
+    def test_divide_floats(self):
+        """Test division of two floats."""
+        self.assertAlmostEqual(divide(5.0, 2.0), 2.5)
+
+    def test_divide_by_zero(self):
+        """Test division by zero raises ValueError."""
+        with self.assertRaises(ValueError):
+            divide(5, 0)
+
+    def test_divide_type_error(self):
+        """Test that dividing non-numbers raises a TypeError."""
+        with self.assertRaises(TypeError):
+            divide("a", "b")
+        with self.assertRaises(TypeError):
+            divide(1, "b")
 
 if __name__ == '__main__':
     unittest.main()
