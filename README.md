@@ -4,9 +4,10 @@ A simple, production-ready calculator written in Python.
 
 ## Features
 
-- Addition of two numbers.
+- Addition and subtraction of two numbers.
 - Handles integers and floats.
 - Robust error handling for non-numeric inputs.
+- A separate module for operations.
 
 ## Usage
 
@@ -16,7 +17,7 @@ To use the calculator, run the `calculator.py` script from your terminal:
 python calculator.py
 ```
 
-You will be prompted to enter two numbers. The script will then print the sum of the two numbers.
+You will be prompted to select an operation and then enter two numbers. The script will then print the result.
 
 ## Testing
 

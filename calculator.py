@@ -1,28 +1,28 @@
-def add(a, b):
-    """
-    This function adds two numbers and returns the result.
-
-    Args:
-        a (int, float): The first number.
-        b (int, float): The second number.
-
-    Returns:
-        int, float: The sum of the two numbers.
-    
-    Raises:
-        TypeError: If the inputs are not numbers.
-    """
-    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
-        raise TypeError("Both inputs must be numbers.")
-    return a + b
+from operations import add, subtract
 
 if __name__ == "__main__":
-    try:
-        num1 = float(input("Enter the first number: "))
-        num2 = float(input("Enter the second number: "))
-        result = add(num1, num2)
-        print(f"The result is: {result}")
-    except ValueError:
-        print("Invalid input. Please enter numbers only.")
-    except TypeError as e:
-        print(f"Error: {e}")
+    print("Select operation:")
+    print("1. Add")
+    print("2. Subtract")
+
+    while True:
+        choice = input("Enter choice(1/2): ")
+
+        if choice in ('1', '2'):
+            try:
+                num1 = float(input("Enter first number: "))
+                num2 = float(input("Enter second number: "))
+            except ValueError:
+                print("Invalid input. Please enter numbers only.")
+                continue
+
+            if choice == '1':
+                print(f"{num1} + {num2} = {add(num1, num2)}")
+            elif choice == '2':
+                print(f"{num1} - {num2} = {subtract(num1, num2)}")
+            
+            next_calculation = input("Let's do next calculation? (yes/no): ")
+            if next_calculation.lower() != 'yes':
+                break
+        else:
+            print("Invalid Input")

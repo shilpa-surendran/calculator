@@ -1,5 +1,5 @@
 import unittest
-from calculator import add
+from operations import add, subtract
 
 class TestCalculator(unittest.TestCase):
 
@@ -29,6 +29,33 @@ class TestCalculator(unittest.TestCase):
             add("a", "b")
         with self.assertRaises(TypeError):
             add(1, "b")
+
+    def test_subtract_integers(self):
+        """Test subtraction of two integers."""
+        self.assertEqual(subtract(2, 1), 1)
+
+    def test_subtract_floats(self):
+        """Test subtraction of two floats."""
+        self.assertAlmostEqual(subtract(2.5, 1.0), 1.5)
+
+    def test_subtract_mixed_types(self):
+        """Test subtraction of an integer and a float."""
+        self.assertAlmostEqual(subtract(2.5, 1), 1.5)
+
+    def test_subtract_negative_numbers(self):
+        """Test subtraction of negative numbers."""
+        self.assertEqual(subtract(-1, -1), 0)
+
+    def test_subtract_with_zero(self):
+        """Test subtraction with zero."""
+        self.assertEqual(subtract(5, 0), 5)
+
+    def test_subtract_type_error(self):
+        """Test that subtracting non-numbers raises a TypeError."""
+        with self.assertRaises(TypeError):
+            subtract("a", "b")
+        with self.assertRaises(TypeError):
+            subtract(1, "b")
 
 if __name__ == '__main__':
     unittest.main()
